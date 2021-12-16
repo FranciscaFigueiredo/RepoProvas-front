@@ -1,7 +1,17 @@
-export function App() {
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import GlobalStyle from "./styles/GlobalStyle";
+
+import Home from "./pages/Home";
+import SaveExam from "./pages/SaveExam";
+
+export default function App() {
     return (
-        <div className="App">
-            <h1>TEST</h1>
-        </div>
+        <BrowserRouter>
+            <GlobalStyle />
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/post' element={<SaveExam />} />
+            </Routes>
+        </BrowserRouter>
     );
 }
