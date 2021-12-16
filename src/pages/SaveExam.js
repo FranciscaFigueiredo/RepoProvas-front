@@ -20,12 +20,13 @@ export default function SaveExam() {
             category,
             subject,
         })
-    }, [])
+    }, [name, link, teacher, category, subject])
     
     function sendExam(event) {
         event.preventdefault();
         postExam(examData)
     }
+
     return (
         <div>
             <h1>Cadastre sua prova aqui!</h1>
