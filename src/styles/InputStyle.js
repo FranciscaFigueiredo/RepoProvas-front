@@ -4,8 +4,7 @@ const Input = styled.input`
     width: 90vw;
     height: 64px;
 
-    color: ${(props) =>
-        props.compare ? "#000000" : !props.compare ? "#ff0000" : "#000000"};
+    color: #000000;
     font-size: 24px;
     font-weight: 500;
 
