@@ -9,10 +9,15 @@ export default function Home() {
             <Link to='/post'>
                 <ButtonHome>Cadastrar Prova</ButtonHome>
             </Link>
-            <ButtonHome>Cadastrar Prova</ButtonHome>
-            <ButtonHome>Buscar Provas</ButtonHome>
-            <ButtonHome>Buscar Professores</ButtonHome>
-            <ButtonHome>Buscar Disciplinas</ButtonHome>
+            <Link to='/exams'>
+                <ButtonHome>Buscar Provas</ButtonHome>
+            </Link>
+            <Link to='/teachers'>
+                <ButtonHome>Buscar Professores</ButtonHome>
+            </Link>
+            <Link to='/subjects'>
+                <ButtonHome>Buscar Disciplinas</ButtonHome>
+            </Link>
         </ContainerPage>
     );
 }
