@@ -23,7 +23,7 @@ export default function SaveExam() {
     }, [name, link, teacher, category, subject])
     
     function sendExam(event) {
-        event.preventdefault();
+        event.preventDefault();
         postExam(examData)
     }
 
