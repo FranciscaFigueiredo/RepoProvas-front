@@ -7,6 +7,7 @@ import ShowExams from "./pages/ShowExams";
 import ShowTeachers from "./pages/ShowTeachers";
 import ShowExamsByTeacher from "./pages/ShowExamsByTeacher";
 import ShowSubjects from "./pages/ShowSubjects";
+import ShowExamsBySubject from "./pages/ShowExamsBySubject";
 
 export default function App() {
     return (
@@ -19,6 +20,7 @@ export default function App() {
                 <Route path='/teachers' element={<ShowTeachers />} />
                 <Route path='/teacher/:id' element={<ShowExamsByTeacher />} />
                 <Route path='/subjects' element={<ShowSubjects />} />
+                <Route path='/subject/:id' element={<ShowExamsBySubject />} />
             </Routes>
         </BrowserRouter>
     );

@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ExamsList from "../components/ExamsList";
-import { getExamsByTeacher } from "../services/repoProvas";
+import { getExamsBySubject } from "../services/repoProvas";
 import { ContainerPage } from "../styles/ContainerStyle";
 
-export default function ShowExamsByTeacher() {
+export default function ShowExamsBySubject() {
     const { id } = useParams();
     const [examsData, setExamsData] = useState([]);
 
     useEffect(() => {
-        getExamsByTeacher(id).then((res) => setExamsData(res.data)).catch((err) => console.error())
+        getExamsBySubject(id).then((res) => setExamsData(res.data)).catch((err) => console.error())
     }, [id])
     console.log({id, examsData})
     

@@ -27,7 +27,7 @@ function getSubjects() {
 }
 
 function getExamsBySubject(id) {
-    const promise = axios.get(`${api}/exam/teacher/${id}`);
+    const promise = axios.get(`${api}/exam/subject/${id}`);
     return promise;
 }
 
