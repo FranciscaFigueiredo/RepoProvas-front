@@ -1,5 +1,4 @@
-const api = process.env.NODE_ENV === 'production' ? 'https://repoprovas-fran.herokuapp.com' : 'http://localhost:4000';
+const api =
+    process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5000';
 
-export {
-  api,
-};
+export { api };

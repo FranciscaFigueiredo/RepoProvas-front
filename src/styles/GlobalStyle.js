@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components'
- 
+import { createGlobalStyle } from 'styled-components';
+
 const GlobalStyle = createGlobalStyle`
 	* {
 		box-sizing: border-box;
@@ -7,14 +7,13 @@ const GlobalStyle = createGlobalStyle`
 		padding: 0;
 		text-decoration: none;
 		border: none;
-
-		font-family: 'Oswald', sans-serif;
 	}
 
 	body {
-		background-color: #8c11be;
-		font-family: 'Raleway', sans-serif;
+		background-color: #fafafa;
+		font-family: 'Lato', sans-serif;
+    	color: rgba(0, 0, 0, 0.8);
 	}
 `;
- 
+
 export default GlobalStyle;

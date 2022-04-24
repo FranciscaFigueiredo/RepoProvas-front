@@ -1,31 +1,38 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-const ContainerPage = styled.div`
-    max-width: 95vw;
+const PageContainer = styled.div`
+    width: 100vw;
     min-height: 100vh;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     margin: 0 auto;
 
-    overflow: 0;
+    position: relative;
+`;
 
-    form {
-        text-align: center;
-        margin: 20px auto 0;
-    }
+const HeaderContainer = styled.div`
+    width: 100vw;
+    min-height: 150px;
 
-    a {
-        color: #ffffff;
-        font-size: 18px;
-        font-weight: bold;
-        line-height: 21px;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 0 auto;
+    padding: 0 30px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    z-index: 10;
 `;
 
 export {
-    ContainerPage,
-}
+    PageContainer,
+    HeaderContainer,
+};

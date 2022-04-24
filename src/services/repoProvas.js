@@ -1,41 +1,25 @@
-import axios from "axios";
-import { api } from "./apiUrl";
+import axios from 'axios';
+import { api } from './apiUrl';
 
-function postExam(body) {
-    const promise = axios.post(`${api}/exam`, body);
+function createConfig(token) {
+    return {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    };
+}
+
+function postSignUp(body) {
+    const promise = axios.post(`${api}/users/registration`, body);
     return promise;
 }
 
-function getExams() {
-    const promise = axios.get(`${api}/exam`);
-    return promise;
-}
-
-function getTeachers() {
-    const promise = axios.get(`${api}/exam/teachers`);
-    return promise;
-}
-
-function getExamsByTeacher(id) {
-    const promise = axios.get(`${api}/exam/teacher/${id}`);
-    return promise;
-}
-
-function getSubjects() {
-    const promise = axios.get(`${api}/exam/subjects`);
-    return promise;
-}
-
-function getExamsBySubject(id) {
-    const promise = axios.get(`${api}/exam/subject/${id}`);
+function postLogin(body) {
+    const promise = axios.post(`${api}/users/authentication`, body);
     return promise;
 }
 
 export {
-    postExam,
-    getExams,
-    getTeachers,
-    getExamsByTeacher,
-    getSubjects,
-    getExamsBySubject,
+    postSignUp,
+    postLogin,
 };

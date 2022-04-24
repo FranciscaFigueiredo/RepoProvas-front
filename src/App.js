@@ -1,27 +1,38 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import GlobalStyle from "./styles/GlobalStyle";
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import UserContext from './contexts/UserContext';
+import { Home } from './pages/Home';
+import Login from './pages/Login';
 
-import Home from "./pages/Home";
-import SaveExam from "./pages/SaveExam";
-import ShowExams from "./pages/ShowExams";
-import ShowTeachers from "./pages/ShowTeachers";
-import ShowExamsByTeacher from "./pages/ShowExamsByTeacher";
-import ShowSubjects from "./pages/ShowSubjects";
-import ShowExamsBySubject from "./pages/ShowExamsBySubject";
+import SignUp from './pages/SignUp';
+import GlobalStyle from './styles/GlobalStyle';
 
 export default function App() {
+    const [user, setUser] = useState(null);
+    const [token, setToken] = useState(null);
+
+    useEffect(() => {
+        if (user === null) {
+            setUser(JSON.parse(sessionStorage.getItem('user')));
+        }
+
+        if (user) {
+            setToken(user.token);
+        }
+    }, [user, token]);
+
     return (
         <BrowserRouter>
             <GlobalStyle />
-            <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/post' element={<SaveExam />} />
-                <Route path='/exams' element={<ShowExams />} />
-                <Route path='/teachers' element={<ShowTeachers />} />
-                <Route path='/teacher/:id' element={<ShowExamsByTeacher />} />
-                <Route path='/subjects' element={<ShowSubjects />} />
-                <Route path='/subject/:id' element={<ShowExamsBySubject />} />
-            </Routes>
+            <UserContext.Provider  value={{ user, setUser, token, setToken }}>
+                <Routes>
+                    <Route path="/" element={<Login user={ user } setUser={ setUser } setToken={ setToken } />} />
+                    <Route path="/sign-up" element={<SignUp />} />
+                    <Route path="/home" element={<Home />} />
+                </Routes>
+                <ToastContainer />
+            </UserContext.Provider>
         </BrowserRouter>
     );
 }
