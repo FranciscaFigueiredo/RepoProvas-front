@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { Header } from '../components/Header';
 import { postSignUp } from '../services/repoProvas';
 
 import { PageContainer } from '../styles/ContainerStyle';
@@ -30,8 +31,7 @@ export default function SignUp() {
             password,
         })
             .then((res) => {
-                // setMessage('Cadastro realizado com sucesso!');
-                // setModalSuccess(true);
+                alert('Cadastro realizado com sucesso!');
                 setTimeout(() => {
                     navigate('/');
                 }, 2000);
@@ -42,31 +42,29 @@ export default function SignUp() {
                 setPassword('');
                 setDisable(false);
 
-                if (err.response.status === 422) {
-                    // setMessage('Digite dados válidos');
-                    // setIsModalOpen(true);
+                if (err.response.status === 400) {
+                    console.log(err.response.status);
+
+                    alert('Digite dados válidos!');
                 }
 
                 if (err.response.status === 409) {
                     setEmail('');
                     setName('');
-                    // setMessage(err.response.data);
-                    // setIsModalOpen(true);
+                    alert('Usuário já existente');
                 }
 
                 if (err.response.status === 500) {
-                    // setMessage(
-                    //     'Servidor fora de área, tente novamente mais tarde'
-                    // );
-                    // setIsModalOpen(true);
+                    alert('Servidor fora de área, tente novamente mais tarde');
                 }
             });
     }
 
     return (
         <PageContainer>
-            <Title>Cadastro</Title>
-            <Form onSubmit={console.log('oioioi')}>
+            <Header />
+            <Title>Sign Up</Title>
+            <Form onSubmit={signup}>
                 <Input
                     type="text"
                     placeholder="name"
@@ -77,7 +75,7 @@ export default function SignUp() {
                 />
                 <Input
                     type="email"
-                    placeholder="e-mail"
+                    placeholder="email"
                     disabled={disable}
                     required
                     value={email}
@@ -92,23 +90,11 @@ export default function SignUp() {
                     onChange={(event) => setPassword(event.target.value)}
                 />
 
-                <ButtonSubmit disabled={disable}>Sign Up</ButtonSubmit>
+                <ButtonSubmit disabled={disable}>Cadastrar</ButtonSubmit>
                 <Link to="/">
                     <Redirect>Switch back to log in</Redirect>
                 </Link>
             </Form>
-
-            {/* {isModalOpen ? (
-                <ModalError
-                    message={message}
-                    isModalOpen={isModalOpen}
-                    setIsModalOpen={setIsModalOpen}
-                />
-            ) : (
-                ''
-            )}
-
-            {modalSuccess ? <ModalSuccess message={message} /> : ''} */}
         </PageContainer>
     );
 }

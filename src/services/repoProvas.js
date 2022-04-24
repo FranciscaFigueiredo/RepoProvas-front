@@ -10,8 +10,16 @@ function createConfig(token) {
 }
 
 function postSignUp(body) {
-    const promise = axios.post(`${api}/users`, body);
+    const promise = axios.post(`${api}/users/registration`, body);
     return promise;
 }
 
-export { postSignUp };
+function postLogin(body) {
+    const promise = axios.post(`${api}/users/authentication`, body);
+    return promise;
+}
+
+export {
+    postSignUp,
+    postLogin,
+};
