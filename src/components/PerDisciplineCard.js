@@ -4,7 +4,7 @@ import { ItemsContainer } from "../styles/CardStyle";
 import { CardContainer } from "../styles/ContainerStyle";
 import { DisciplineDetails } from "./DisciplineDetails";
 
-export function PerTermCard({ token, term }) {    
+export function PerDisciplineCard({ token, term }) {    
     const [disciplines, setDisciplines] = useState([]);
 
     function getDisciplinesByTerm() {
@@ -13,7 +13,6 @@ export function PerTermCard({ token, term }) {
             .catch((err) => console.error());
     }
 
-    console.log(disciplines);
     return (
         <CardContainer>
             <ItemsContainer onClick={ getDisciplinesByTerm } >

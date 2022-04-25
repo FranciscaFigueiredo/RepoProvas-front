@@ -1,12 +1,8 @@
-import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import UserContext from "../contexts/UserContext";
+import { useEffect, useState } from "react";
 
 import { Button, ButtonsContainer, Line, MenuContainer, Search } from "../styles/NavigationMenuStyle";
 
 export function Menu({ status, setStatus }) {
-    const navigate = useNavigate();
-    const { user, setUser } = useContext(UserContext);
     const [search, setSearch] = useState('');
     
     const [placeText, setPlaceText] = useState('Pesquise por disciplina');
@@ -15,8 +11,7 @@ export function Menu({ status, setStatus }) {
         if (status[1]) {
             setPlaceText('Pesquise por pessoa instrutora');
         }
-    }, [status])
-    console.log(status);
+    }, [status]);
 
     return (
         <MenuContainer>

@@ -58,7 +58,7 @@ export default function Login({ user, setUser, setToken }) {
 
                 setPassword('');
                 setDisable(false);
-                console.log(err.response.status);
+
                 if (err.response.status === 400) {
                     alert('Digite dados válidos');
                 }

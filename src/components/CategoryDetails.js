@@ -1,19 +1,19 @@
 import { useState } from "react";
-import { getTestsByDisciplineTermNumber } from "../services/repoProvas";
+import { getTestsByTeacherAndCategoryIds } from "../services/repoProvas";
 import { ItemsContainer } from "../styles/CardStyle";
 
-export function DisciplineDetails({ token, term, discipline }) {
+export function CategoryDetails({ token, teacher, category }) {
     const [tests, setTests] = useState([]);
 
-    function getTestsByDisciplineAndTerm() {
-        getTestsByDisciplineTermNumber({ token, term: term.number, discipline: discipline.id })
+    function getTestsByTeacherAndCategory() {
+        getTestsByTeacherAndCategoryIds({ token, teacher: teacher.id, category: category.id })
             .then((res) => setTests(res.data))
             .catch((err) => console.error());
     }
 
     return (
-        <ItemsContainer onClick={ getTestsByDisciplineAndTerm } >
-            <summary>{ discipline.name }</summary>
+        <ItemsContainer onClick={ getTestsByTeacherAndCategory } >
+            <summary>{ category.name }</summary>
             {
                 tests ?
                     tests.map((test) => <a href={test.pdfUrl} target='_blank' rel='noreferrer' >{ test.name }</a>)

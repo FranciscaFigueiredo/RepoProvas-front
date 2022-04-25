@@ -44,6 +44,24 @@ function getTestsByDisciplineTermNumber({ token, term, discipline }) {
     return promise;
 }
 
+function getTeachers({ token }) {
+    const config = createConfig({ token })
+    const promise = axios.get(`${api}/teachers`, config);
+    return promise;
+}
+
+function getCategoriesByTeacherId({ token, teacher }) {
+    const config = createConfig({ token })
+    const promise = axios.get(`${api}/categories/teachers/${teacher}`, config);
+    return promise;
+}
+
+function getTestsByTeacherAndCategoryIds({ token, teacher, category }) {
+    const config = createConfig({ token })
+    const promise = axios.get(`${api}/tests/teachers/${teacher}/categories/${category}`, config);
+    return promise;
+}
+
 export {
     postSignUp,
     postLogin,
@@ -51,4 +69,7 @@ export {
     getTests,
     getDisciplinesByTermNumber,
     getTestsByDisciplineTermNumber,
+    getTeachers,
+    getCategoriesByTeacherId,
+    getTestsByTeacherAndCategoryIds,
 };
