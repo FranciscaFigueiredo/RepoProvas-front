@@ -10,13 +10,13 @@ export function CategoryDetails({ token, teacher, category }) {
             .then((res) => setTests(res.data))
             .catch((err) => console.error());
     }
-
+console.log(tests);
     return (
         <ItemsContainer onClick={ getTestsByTeacherAndCategory } >
             <summary>{ category.name }</summary>
             {
                 tests ?
-                    tests.map((test) => <a href={test.pdfUrl} target='_blank' rel='noreferrer' >{ test.name }</a>)
+                    tests.map((test) => <a href={test.pdfUrl} target='_blank' rel='noreferrer' >{ test.name } ({test.teacherDiscipline.discipline.name})</a>)
                 : ''
             }
         </ItemsContainer>

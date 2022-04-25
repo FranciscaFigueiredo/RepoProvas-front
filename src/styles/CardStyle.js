@@ -23,6 +23,10 @@ const ItemsContainer = styled.details`
         transition: 200ms linear;
     }
 
+    summary[open] {
+        content: "-";
+    }
+
     summary {
         margin: 10px;
     }
