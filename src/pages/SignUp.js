@@ -43,8 +43,6 @@ export default function SignUp() {
                 setDisable(false);
 
                 if (err.response.status === 400) {
-                    console.log(err.response.status);
-
                     alert('Digite dados válidos!');
                 }
 

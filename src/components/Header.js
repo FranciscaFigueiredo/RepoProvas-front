@@ -1,19 +1,25 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import UserContext from "../contexts/UserContext";
 import { HeaderContainer } from "../styles/ContainerStyle";
 import { Logout, TitleApplication, TitleIcon } from "../styles/Header/style";
 
 export function Header() {
-    const { user } = useContext(UserContext);
+    const navigate = useNavigate();
+    const { user, setUser } = useContext(UserContext);
 
-    console.log(user);
+    function logoutUser() {
+        setUser(null);
+        sessionStorage.clear();
+        navigate('/');
+    }
 
     return (
         <HeaderContainer>
             <TitleApplication><TitleIcon /> RepoProvas</TitleApplication>
             {
                 user ?
-                    <Logout />
+                    <Logout onClick={ logoutUser } />
                 : ''
             }
         </HeaderContainer>

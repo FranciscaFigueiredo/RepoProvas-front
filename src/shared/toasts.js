@@ -2,7 +2,6 @@ import { toast, ToastContainer } from 'react-toastify';
 import styled from 'styled-components';
 
 function toastError(message) {
-    console.log(message);
     return toast.error(message, {
         position: 'top-center',
         autoClose: 2000,
