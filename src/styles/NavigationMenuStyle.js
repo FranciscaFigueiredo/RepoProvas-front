@@ -59,6 +59,8 @@ const Button = styled.button`
     box-sizing: border-box;
     
     padding: 10px;
+
+    cursor: pointer;
 `;
 
 const ButtonsContainer = styled.div`
