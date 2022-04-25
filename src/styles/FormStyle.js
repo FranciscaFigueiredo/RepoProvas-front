@@ -25,7 +25,7 @@ const Input = styled.input`
     width: 80vw;
     height: 55px;
 
-    color: #000000;
+    color: rgba(63, 97, 215, 1);
     font-size: 22px;
     font-family: 'Poppins', sans-serif;
 
@@ -34,12 +34,12 @@ const Input = styled.input`
 
     background-color: rgba(255, 255, 255, 0);
     border-radius: 6px;
-    border: 2px solid #c4c4c4;
+    border: 2px solid #3f61d7;
 
     outline: 0;
 
-    &placeholder {
-        color: #9f9f9f;
+    &::placeholder {
+        color: rgba(63, 97, 215, 0.6);
     }
 
     @media (min-width: 611px) {
