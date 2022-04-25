@@ -13,6 +13,8 @@ const ItemsContainer = styled.details`
 
     margin: 0 20px;
 
+    cursor: pointer;
+
     summary:before {
         content: "+";
         color: black;
