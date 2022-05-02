@@ -68,6 +68,7 @@ export default function SignUp() {
                     placeholder="name"
                     disabled={disable}
                     required
+                    id="name"
                     value={name}
                     onChange={(event) => setName(event.target.value)}
                 />
@@ -76,6 +77,7 @@ export default function SignUp() {
                     placeholder="email"
                     disabled={disable}
                     required
+                    id="email"
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
                 />
@@ -84,6 +86,7 @@ export default function SignUp() {
                     placeholder="password"
                     disabled={disable}
                     required
+                    id="password"
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
                 />

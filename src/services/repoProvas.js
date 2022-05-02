@@ -62,6 +62,14 @@ function getTestsByTeacherAndCategoryIds({ token, teacher, category }) {
     return promise;
 }
 
+function incrementNumberOfViews({ token, test }) {
+    console.log(token);
+    const config = createConfig({ token })
+    console.log(config)
+    const promise = axios.patch(`${api}/tests/${test}/view`, {}, config);
+    return promise;
+}
+
 export {
     postSignUp,
     postLogin,
@@ -72,4 +80,5 @@ export {
     getTeachers,
     getCategoriesByTeacherId,
     getTestsByTeacherAndCategoryIds,
+    incrementNumberOfViews,
 };
