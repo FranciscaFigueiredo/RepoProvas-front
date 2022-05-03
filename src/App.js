@@ -31,7 +31,6 @@ export default function App() {
                     <Route path="/sign-up" element={<SignUp />} />
                     <Route path="/home" element={<Home />} />
                 </Routes>
-                <ToastContainer />
             </UserContext.Provider>
         </BrowserRouter>
     );

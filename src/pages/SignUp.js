@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import { Header } from '../components/Header';
 import { postSignUp } from '../services/repoProvas';
 
@@ -96,6 +97,17 @@ export default function SignUp() {
                     <Redirect>Switch back to log in</Redirect>
                 </Link>
             </Form>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </PageContainer>
     );
 }

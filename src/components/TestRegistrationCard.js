@@ -3,6 +3,7 @@ import { CardsContainer } from "../styles/ContainerStyle";
 import { ButtonSubmit, Form, Input, SelectItem, Title } from "../styles/FormStyle";
 
 import { getCategories, getDisciplines, getTeachersByDisciplineId, postNewTestData } from "../services/repoProvas";
+import { toast } from "react-toastify";
 
 export function TestRegistrationCard({ token }) {
     const [name, setName] = useState('');
@@ -73,7 +74,7 @@ export function TestRegistrationCard({ token }) {
             teacherDisciplineId,
         }})
             .then((res) => {
-                alert('Cadastro efetuado!');
+                toast('Cadastro efetuado!');
                 setTimeout(() => {
                     setName('');
                     setPdfUrl('');

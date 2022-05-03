@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import { Header } from '../components/Header';
 import { postLogin } from '../services/repoProvas';
+import { toastError, toastSuccess } from '../shared/toasts';
 
 import { PageContainer } from '../styles/ContainerStyle';
 import {
@@ -33,7 +35,7 @@ export default function Login({ user, setUser, setToken }) {
 
         setTimeout(() => {
             navigate('/home');
-        }, 100);
+        }, 1000);
     }
 
     function login(event) {
@@ -45,7 +47,7 @@ export default function Login({ user, setUser, setToken }) {
             password,
         })
             .then((res) => {
-                alert('Login com sucesso!');
+                toastSuccess('Login com sucesso!');
                 redirectLogin(res);
             })
             .catch((err) => {
@@ -55,16 +57,16 @@ export default function Login({ user, setUser, setToken }) {
                 setDisable(false);
 
                 if (err.response.status === 400) {
-                    alert('Digite dados válidos');
+                    toastError('Digite dados válidos');
                 }
 
                 if (err.response.status === 401) {
                     setEmail('');
-                    alert(err.response.data);
+                    toastError(err.response.data);
                 }
 
                 if (err.response.status === 500) {
-                    alert(
+                    toastError(
                         'Servidor fora de área, tente novamente mais tarde'
                     );
 
@@ -101,6 +103,17 @@ export default function Login({ user, setUser, setToken }) {
                     <Redirect>First time? Create an account!</Redirect>
                 </Link>
             </Form>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </PageContainer>
     );
 }

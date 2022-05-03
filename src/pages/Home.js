@@ -13,11 +13,13 @@ import { PerTeacherCard } from "../components/PerTeacherCard";
 import { TestRegistrationCard } from "../components/TestRegistrationCard"
 
 import { getTeachers, getTeachersByName, getTerms, getTermsByDisciplineName } from "../services/repoProvas";
+import { ToastContainer } from "react-toastify";
 
 export function Home() {
     const navigate = useNavigate();
 
-    const { token } = useContext(UserContext);
+    const user = JSON.parse(`${sessionStorage.getItem('user')}`);
+    const { token } = user;
 
     const [search, setSearch] = useState('');
 
@@ -28,7 +30,7 @@ export function Home() {
     if (!token) {
         navigate('/');
     }
-
+    
     useEffect(() => {
         if (status[0] && token && search.length < 3) {
             getTerms({ token })
@@ -83,6 +85,17 @@ export function Home() {
                     : ''
                 }
             </CardsContainer>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </PageContainer>
     );
 }
