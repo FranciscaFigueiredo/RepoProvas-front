@@ -10,7 +10,7 @@ export function CategoryDetails({ token, teacher, category }) {
             .then((res) => setTests(res.data))
             .catch((err) => console.error());
     }
-console.log(tests);
+
     return (
         <ItemsContainer onClick={ getTestsByTeacherAndCategory } >
             <summary>{ category.name }</summary>

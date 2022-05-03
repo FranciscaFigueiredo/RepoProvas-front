@@ -14,7 +14,7 @@ export default function App() {
 
     useEffect(() => {
         if (user === null) {
-            setUser(JSON.parse(sessionStorage.getItem('user')));
+            setUser(JSON.parse(`${sessionStorage.getItem('user')}`));
         }
 
         if (user) {

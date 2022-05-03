@@ -26,15 +26,33 @@ function getTerms({ token }) {
     return promise;
 }
 
+function getTermsByDisciplineName({ token, discipline }) {
+    const config = createConfig({ token })
+    const promise = axios.get(`${api}/terms?discipline=${discipline}`, config);
+    return promise;
+}
+
 function getTests({ token, term }) {
     const config = createConfig({ token })
     const promise = axios.get(`${api}/tests/terms/${term}`, config);
     return promise;
 }
 
-function getDisciplinesByTermNumber({ token, term }) {
-    const config = createConfig({ token })
+function getDisciplinesByTermNumber({ token, term, search }) {
+    const config = createConfig({ token });
+
+    if (search.length > 2) {
+        const promise = axios.get(`${api}/disciplines/terms/${term}?name=${search}`, config);
+        return promise;
+    }
+
     const promise = axios.get(`${api}/disciplines/terms/${term}`, config);
+    return promise;
+}
+
+function getDisciplines({ token }) {
+    const config = createConfig({ token })
+    const promise = axios.get(`${api}/disciplines`, config);
     return promise;
 }
 
@@ -50,9 +68,27 @@ function getTeachers({ token }) {
     return promise;
 }
 
-function getCategoriesByTeacherId({ token, teacher }) {
+function getTeachersByName({ token, name }) {
     const config = createConfig({ token })
+    const promise = axios.get(`${api}/teachers?name=${name}`, config);
+    return promise;
+}
+
+function getTeachersByDisciplineId({ token, discipline }) {
+    const config = createConfig({ token })
+    const promise = axios.get(`${api}/teachers/disciplines/${discipline}`, config);
+    return promise;
+}
+
+function getCategoriesByTeacherId({ token, teacher }) {
+    const config = createConfig({ token });
     const promise = axios.get(`${api}/categories/teachers/${teacher}`, config);
+    return promise;
+}
+
+function getCategories({ token }) {
+    const config = createConfig({ token });
+    const promise = axios.get(`${api}/categories`, config);
     return promise;
 }
 
@@ -62,10 +98,14 @@ function getTestsByTeacherAndCategoryIds({ token, teacher, category }) {
     return promise;
 }
 
+function postNewTestData({ token, test }) {
+    const config = createConfig({ token });
+    const promise = axios.post(`${api}/tests`, test, config);
+    return promise;
+}
+
 function incrementNumberOfViews({ token, test }) {
-    console.log(token);
-    const config = createConfig({ token })
-    console.log(config)
+    const config = createConfig({ token });
     const promise = axios.patch(`${api}/tests/${test}/view`, {}, config);
     return promise;
 }
@@ -74,11 +114,17 @@ export {
     postSignUp,
     postLogin,
     getTerms,
+    getTermsByDisciplineName,
     getTests,
     getDisciplinesByTermNumber,
+    getDisciplines,
     getTestsByDisciplineTermNumber,
     getTeachers,
+    getTeachersByName,
+    getTeachersByDisciplineId,
     getCategoriesByTeacherId,
+    getCategories,
     getTestsByTeacherAndCategoryIds,
+    postNewTestData,
     incrementNumberOfViews,
 };

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import Select from 'react-select';
+
 const Form = styled.form`
     text-align: center;
 
@@ -87,4 +89,40 @@ const Redirect = styled.span`
     }
 `;
 
-export { Form, Title, Input, ButtonSubmit, Redirect };
+const SelectItem = styled(Select)`
+    width: 80vw;
+
+    color: rgba(63, 97, 215, 1);
+    font-size: 22px;
+    font-family: 'Poppins', sans-serif;
+
+    margin-bottom: 10px;
+
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 6px;
+    border: 2px solid #3f61d7;
+
+    outline: 0;
+
+    .css-14el2xx-placeholder {
+        color: rgba(63, 97, 215, 0.6);
+        text-align: left;
+
+        padding-left: 7px;
+    }
+
+
+    .css-1okebmr-indicatorSeparator {
+        background-color: rgba(63, 97, 215, 0.6);
+    }
+
+    .css-tj5bde-Svg {
+        color: rgba(63, 97, 215, 0.6);
+    }
+
+    @media (min-width: 611px) {
+        width: 30vw;
+    }
+`;
+
+export { Form, Title, Input, ButtonSubmit, Redirect, SelectItem };

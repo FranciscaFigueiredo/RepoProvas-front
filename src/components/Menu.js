@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
+import { Form } from "../styles/FormStyle";
 
 import { Button, ButtonsContainer, Line, MenuContainer, Search } from "../styles/NavigationMenuStyle";
 
-export function Menu({ status, setStatus }) {
-    const [search, setSearch] = useState('');
-    
+export function Menu({ status, setStatus, search, setSearch }) {    
     const [placeText, setPlaceText] = useState('Pesquise por disciplina');
     
     useEffect(() => {

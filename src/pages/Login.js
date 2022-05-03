@@ -27,18 +27,13 @@ export default function Login({ user, setUser, setToken }) {
     function redirectLogin(res) {
         setToken(res.data.token);
 
-        const user = JSON.stringify({
-            id: res.data.id,
-            name: res.data.name,
-            email: res.data.email,
-            token: res.data.token,
-        });
+        const user = JSON.stringify(res.data);
         sessionStorage.setItem('user', user);
         setUser(user);
 
         setTimeout(() => {
             navigate('/home');
-        }, 10);
+        }, 100);
     }
 
     function login(event) {
