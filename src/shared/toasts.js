@@ -1,5 +1,9 @@
 import { toast, ToastContainer } from 'react-toastify';
 import styled from 'styled-components';
+import { injectStyle } from "react-toastify/dist/inject-style";
+
+// CALL IT ONCE IN YOUR APP
+injectStyle();
 
 function toastError(message) {
     return toast.error(message, {

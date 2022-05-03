@@ -37,19 +37,6 @@ const ItemsContainer = styled.details`
         font-size: 15px;
         margin: 0 20px;
     }
-
-    a {
-        all: unset;
-        width: fit-content;
-
-        color: #3f61d7;
-        font-size: 14px;
-        
-        margin: 0 30px;
-        padding: 0 10px 10px;
-
-        cursor: pointer;
-    }
 `;
 
 export {

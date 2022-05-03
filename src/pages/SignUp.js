@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import { Header } from '../components/Header';
 import { postSignUp } from '../services/repoProvas';
 
@@ -68,6 +69,7 @@ export default function SignUp() {
                     placeholder="name"
                     disabled={disable}
                     required
+                    id="name"
                     value={name}
                     onChange={(event) => setName(event.target.value)}
                 />
@@ -76,6 +78,7 @@ export default function SignUp() {
                     placeholder="email"
                     disabled={disable}
                     required
+                    id="email"
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
                 />
@@ -84,6 +87,7 @@ export default function SignUp() {
                     placeholder="password"
                     disabled={disable}
                     required
+                    id="password"
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
                 />
@@ -93,6 +97,17 @@ export default function SignUp() {
                     <Redirect>Switch back to log in</Redirect>
                 </Link>
             </Form>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </PageContainer>
     );
 }

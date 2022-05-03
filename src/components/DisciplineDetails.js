@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { getTestsByDisciplineTermNumber } from "../services/repoProvas";
+import { getTestsByDisciplineTermNumber, postIncrementNumberOfViews } from "../services/repoProvas";
 import { ItemsContainer } from "../styles/CardStyle";
+import { Test } from "./Test";
 
 export function DisciplineDetails({ token, term, discipline }) {
     const [tests, setTests] = useState([]);
@@ -16,7 +17,7 @@ export function DisciplineDetails({ token, term, discipline }) {
             <summary>{ discipline.name }</summary>
             {
                 tests ?
-                    tests.map((test) => <a href={test.pdfUrl} target='_blank' rel='noreferrer' >{ test.name }  ({test.teacherDiscipline.teacher.name})</a>)
+                    tests.map((test, index) => <Test key={index} token={ token } test={ test } />)
                 : ''
             }
         </ItemsContainer>

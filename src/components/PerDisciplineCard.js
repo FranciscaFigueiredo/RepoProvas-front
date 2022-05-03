@@ -4,11 +4,11 @@ import { ItemsContainer } from "../styles/CardStyle";
 import { CardContainer } from "../styles/ContainerStyle";
 import { DisciplineDetails } from "./DisciplineDetails";
 
-export function PerDisciplineCard({ token, term }) {    
+export function PerDisciplineCard({ token, term, search }) {    
     const [disciplines, setDisciplines] = useState([]);
 
     function getDisciplinesByTerm() {
-        getDisciplinesByTermNumber({ token, term: term.number })
+        getDisciplinesByTermNumber({ token, term: term.number, search })
             .then((res) => setDisciplines(res.data))
             .catch((err) => console.error());
     }
