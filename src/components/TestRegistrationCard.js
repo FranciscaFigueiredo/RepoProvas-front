@@ -3,9 +3,11 @@ import { CardsContainer } from "../styles/ContainerStyle";
 import { ButtonSubmit, Form, Input, SelectItem, Title } from "../styles/FormStyle";
 
 import { getCategories, getDisciplines, getTeachersByDisciplineId, postNewTestData } from "../services/repoProvas";
-import { toast } from "react-toastify";
+import { toastError, toastSuccess } from "../shared/toasts";
+import { useNavigate } from "react-router-dom";
 
 export function TestRegistrationCard({ token }) {
+    const navigate = useNavigate();
     const [name, setName] = useState('');
     const [pdfUrl, setPdfUrl] = useState('');
     const [categoryId, setCategoryId] = useState(null);
@@ -74,7 +76,7 @@ export function TestRegistrationCard({ token }) {
             teacherDisciplineId,
         }})
             .then((res) => {
-                toast('Cadastro efetuado!');
+                toastSuccess('Cadastro efetuado!');
                 setTimeout(() => {
                     setName('');
                     setPdfUrl('');
@@ -85,7 +87,27 @@ export function TestRegistrationCard({ token }) {
                     setOptionsTeachers([])
                 }, 3000)
             })
-            .catch((err) => console.error());    
+            .catch((err) => {
+                console.error();
+                if (err.response.status === 400) {
+                    toastError('Digite dados válidos');
+                }
+
+                if (err.response.status === 401) {
+                    toastError('Usuário não logado');
+                    navigate('/')
+                }
+
+                if (err.response.status === 500) {
+                    toastError(
+                        'Servidor fora de área, tente novamente mais tarde'
+                    );
+
+                    setTimeout(() => {
+                        navigate('/');
+                    }, 2000);
+                }
+            });    
     }
 
     return (
